@@ -299,4 +299,4 @@ function checkSP(password1){
 generateBtn.addEventListener("click", writePassword);
 
 
-console.log(checkUC(["9","=","+","}","0","d","e"]));
+//console.log(checkUC(["9","=","+","}","0","d","e"]));
