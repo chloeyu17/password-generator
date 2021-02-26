@@ -2,31 +2,13 @@
 const uc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const lc = "abcdefghijklmnopqrstuvwxyz";
 const nm = "1234567890";
-const sp = "`~!@#$%^&*()-_+=[]{}\'\"\\|;:/?.>,<";
+const sp = " `~!@#$%^&*()-_+=[]{}\'\"\\|;:/?.>,<";
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-//Functions give random character depending on type
-function generateUC(){
-    return uc[Math.floor(Math.random()*26)];
-}
-
-function generateLC(){
-    return lc[Math.floor(Math.random()*26)];
-}
-
-function generateNM(){
-    return Math.floor(Math.random()*10).toString();
-}
-
-function generateSP(){
-    return sp[Math.floor(Math.random()*33)];
-}
-
 // Write password to the #password input
 function writePassword() {
-
     //Prompts for password length
     var pLength = prompt("How many characters would you like the password to be? Choose a number between 8 and 128.", "50");
 
@@ -34,7 +16,7 @@ function writePassword() {
     if(pLength === null){
         return;
     } 
-    while (pLength<8 || pLength>128){
+    while (pLength<8 || pLength>128 || Number.isNaN(parseInt(pLength))){
         pLength = prompt("Please input a number between 8 and 128.");
     }
     
@@ -52,251 +34,44 @@ function writePassword() {
 
 //Generate password with given criteria
 function generatePassword(length, upper, lower, number, special){
-
-    //password is an array that will be pushed to depending on which character types are required.  charType is an array that holds the bool inputs on which charTypes are desired.
-    //charNum will be used to determine which types of characters should be generated depending on the case.
+    //password is an array that will be pushed to depending on which character types are required.  
+    //charType is an array that will hold the desired charTypes based on the response to confirm
     var password = [];
-    var charType = [upper, lower, number, special];
-    var charNum;
+    var charType = [];
+    var numCharTypes = 0;
 
+    //We add the types of desired characters to an array containing all desired charTypes
+    //We will also add one of that desired character to the password array and increase the number of chartypes
     if(!upper && !lower && !number && !special){
         window.alert("Please confirm at least one type of character");
     } else {
-        switch(charType.join(' ')){
-            //Uppercase only
-            case("true false false false"):
-                for(var i=0; i<length; i++){
-                    password.push(generateUC());
-                }
-                break;
-
-            //Lowercase only
-            case("false true false false"):
-                for(var i=0; i<length; i++){
-                    password.push(generateLC());
-                }
-                break;
-
-            //Numbers only
-            case("false false true false"):
-                for(var i=0; i<length; i++){
-                    password.push(generateNM());
-                }
-                break;
-
-            //Special Characters only
-            case("false false false true"):
-                for(var i=0; i<length; i++){
-                    password.push(generateSP());
-                }
-                break;
-
-            //Uppercase and Lowercase 
-            case("true true false false"):
-                for(var i=0; i<length; i++){
-                    charNum = Math.floor(Math.random()*2);
-                    if(charNum == 0){
-                        password.push(generateUC());
-                    } else{
-                        password.push(generateLC());
-                    }
-                }
-                break;
-
-            //Uppercase and Numbers
-            case("true false true false"):
-                for(var i=0; i<length; i++){
-                    charNum = Math.floor(Math.random()*2);
-                    if(charNum == 0){
-                        password.push(generateUC());
-                    } else{
-                        password.push(generateNM());
-                    }
-                }
-                break;
-
-            //Uppercase and Special
-            case("true false false true"):
-                for(var i=0; i<length; i++){
-                    charNum = Math.floor(Math.random()*2);
-                    if(charNum == 0){
-                        password.push(generateUC());
-                    } else{
-                        password.push(generateSP());
-                    }
-                }
-                break;
-
-            //Lowercase and Numbers
-            case("false true true false"):
-                for(var i=0; i<length; i++){
-                    charNum = Math.floor(Math.random()*2);
-                    if(charNum == 0){
-                        password.push(generateLC());
-                    } else{
-                        password.push(generateNM());
-                    }
-                }
-                break;
-
-            //Lowercase and Special
-            case("false true false true"):
-                for(var i=0; i<length; i++){
-                    charNum = Math.floor(Math.random()*2);
-                    if(charNum == 0){
-                        password.push(generateLC());
-                    } else{
-                        password.push(generateSP());
-                    }
-                }
-                break;
-
-            //Numbers and Special
-            case("false false true true"):
-                for(var i=0; i<length; i++){
-                    charNum = Math.floor(Math.random()*2);
-                    if(charNum == 0){
-                        password.push(generateNM());
-                    } else{
-                        password.push(generateSP());
-                    }
-                }
-                break;
-
-            //Uppercase Lowercase Numbers
-            case("true true true false"):
-                for(var i=0; i<length; i++){
-                    charNum = Math.floor(Math.random()*3);
-                    if(charNum == 0){
-                        password.push(generateUC());
-                    } else if (charNum == 1){
-                        password.push(generateLC());
-                    } else {
-                        password.push(generateNM());
-                    }
-                }
-                break;
-
-            //Uppercase Lowercase Special
-            case("true true false true"):
-                for(var i=0; i<length; i++){
-                    charNum = Math.floor(Math.random()*3);
-                    if(charNum == 0){
-                        password.push(generateUC());
-                    } else if (charNum == 1){
-                        password.push(generateLC());
-                    } else {
-                        password.push(generateSP());
-                    }
-                }
-                break;
-
-            //Uppercase Numbers Special
-            case("true false true true"):
-                for(var i=0; i<length; i++){
-                    charNum = Math.floor(Math.random()*3);
-                    if(charNum == 0){
-                        password.push(generateUC());
-                    } else if (charNum == 1){
-                        password.push(generateNM());
-                    } else {
-                        password.push(generateSP());
-                    }
-                }
-                break;
-
-            //Lowercase Numbers Special
-            case("false true true true"):
-                for(var i=0; i<length; i++){
-                    charNum = Math.floor(Math.random()*3);
-                    if(charNum == 0){
-                        password.push(generateLC());
-                    } else if (charNum == 1){
-                        password.push(generateNM());
-                    } else {
-                        password.push(generateSP());
-                    }
-                }
-                break;
-            
-            //Uppercase Lowercase Numbers and Special
-            case("true true true true"):
-                for(var i=0; i<length; i++){
-                    charNum = Math.floor(Math.random()*4);
-                    if(charNum == 0){
-                        password.push(generateUC());
-                    } else if(charNum == 1){
-                        password.push(generateLC());
-                    } else if (charNum == 2){
-                        password.push(generateNM());
-                    } else {
-                        password.push(generateSP());
-                    }
-                }
-                break;
+        if (upper === true){
+            charType = charType.concat(uc.split(''));
+            password.push(uc.split('')[Math.floor(Math.random()*uc.split('').length)]);
+            numCharTypes++;
+        } 
+        if (lower === true){
+            charType = charType.concat(lc.split(''));
+            password.push(lc.split('')[Math.floor(Math.random()*lc.split('').length)]);
+            numCharTypes++;
+        }
+        if (number === true){
+            charType = charType.concat(nm.split(''));
+            password.push(nm.split('')[Math.floor(Math.random()*nm.split('').length)]);
+            numCharTypes++;
+        }
+        if (special === true){
+            charType = charType.concat(sp.split(''));
+            password.push(sp.split('')[Math.floor(Math.random()*sp.split('').length)]);
+            numCharTypes++;
         }
     }
-
-//    console.log(checkLC(password));
-//   console.log(checkUC(password));
-//    console.log(checkNM(password));
-//    console.log(checkSP(password));
-    return password.join('');
-}
-
-function checkUC(password1){
-    var i = 0;
-    while (!uc.includes(password1[i])){
-        i++;
+    //We now fill in the rest of the desired password length randomly and return a string of the shuffled array
+    for(var j = 0; j<(length-numCharTypes); j++){
+        password.push(charType[Math.floor(Math.random()*(charType.length))]);
     }
-    if(i < password1.length){
-        return false;
-    } else {
-        return true;
-    }
-}
-
-
-function checkLC(password1){
-    var i = 0;
-    while (!lc.includes(password1[i])){
-        i++;
-    }
-    if(i < password1.length){
-        return false;
-    } else {
-        return true;
-    }
-}
-
-
-
-function checkNM(password1){
-    var i = 0;
-    while (!nm.includes(password1[i])){
-        i++;
-    }
-    if(i < password1.length){
-        return false;
-    } else {
-        return true;
-    }
-}
-
-function checkSP(password1){
-    var i = 0;
-    while (!sp.includes(password1[i])){
-        i++;
-    }
-    if(i < password1.length){
-        return false;
-    } else {
-        return true;
-    }
+    return password.sort(() => Math.random()-0.5).join('');
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-
-//console.log(checkUC(["9","=","+","}","0","d","e"]));
