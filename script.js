@@ -16,7 +16,7 @@ function writePassword() {
     if(pLength === null){
         return;
     } 
-    while (pLength<8 || pLength>128 || Number.isNaN(parseInt(pLength))){
+    while (pLength<8 || pLength>128 || isNaN(parseInt(pLength))){
         pLength = prompt("Please input a number between 8 and 128.");
     }
     
@@ -27,7 +27,7 @@ function writePassword() {
     var pSpChar = confirm("Would you like to include special characters?");
 
     //Password and password text run generatePassword with the criteria and set the textarea with #password to the generated password
-    var password = generatePassword(pLength, pUpChar, pLoChar, pNuChar, pSpChar);
+    var password = generatePassword(parseInt(pLength), pUpChar, pLoChar, pNuChar, pSpChar);
     var passwordText = document.querySelector("#password");
     passwordText.value = password;
 }
