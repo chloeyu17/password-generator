@@ -1,92 +1,33 @@
-# 03 JavaScript: Password Generator
+# **Password Generator**
+[Overview](#overview) ||
+[Web Address](#overview) || 
+[Usage Tips](#overview) || 
+[Collaborators](#overview) || 
+[Images](#images)
 
-## Your Task
+# 1. Overview
+The Password Generator Application generates a randomized string of characters to be used as a secure password. Users can indicate how many characters the password should be and whether the password should contain uppercase, lowercase, numeric, and/or special characters.
 
-This week’ps homework requires you to modify starter code to create an application that enables employees to generate random passwords based on criteria that they’ve selected. This app will run in the browser and will feature dynamically updated HTML and CSS powered by JavaScript codhe that you write. It will have a clean and polished, responsive user interface that adapts to multiple screen sizes.
+Javascript is used to prompt the user for the desired criteria and generate a password that is guaranteed to contain at least one of each of the desired characters.  The characters chosen are randomized, which will increase security of the password.  The password can be selected and copy-pasted for use. 
 
-The password can include special characters. If you’re unfamiliar with these, see this [list of password special characters](https://www.owasp.org/index.php/Password_special_characters) from the OWASP Foundation.
+One strong motivation to build this project was to ensure that passwords I use in the future are secure.  Many people can fall into the habit of using the same password for multiple accounts.  Often, these passwords are easily guessed and contain names or words that are significant to the user.  By using a randomly generated password with a combination of uppercase, lowercase, numeric, and special characters, users can improve the security of their accounts.
 
-## User Story
+One challenge that I encountered was in generating the password.  My first response to this problem was to figure out the 16 possible combinations of types of characters used and write out a switch case for each possibility.  After speaking with a classmate, I realized that this problem could be solved much more elegantly by pushing an array of characters of the desired type into a larger array of types of characters to be used in the password.  
 
-```
-AS AN employee with access to sensitive data
-I WANT to randomly generate a password that meets certain criteria
-SO THAT I can create a strong password that provides greater security
-```
+# 2. Web Address
+Deployed Application:
+https://chloeyu17.github.io/password-generator/
 
-## Acceptance Criteria
+Github Repository:
+https://github.com/chloeyu17/password-generator/
 
-```
-GIVEN I need a new, secure password
-WHEN I click the button to generate a password
-THEN I am presented with a series of prompts for password criteria
-WHEN prompted for password criteria
-THEN I select which criteria to include in the password
-WHEN prompted for the length of the password
-THEN I choose a length of at least 8 characters and no more than 128 characters
-WHEN prompted for character types to include in the password
-THEN I choose lowercase, uppercase, numeric, and/or special characters
-WHEN I answer each prompt
-THEN my input should be validated and at least one character type should be selected
-WHEN all prompts are answered
-THEN a password is generated that matches the selected criteria
-WHEN the password is generated
-THEN the password is either displayed in an alert or written to the page
-```
+# 3. Usage Tips
+Clicking the button "generate password" will lead the user to a series of prompts.  The entered number for the first prompt will be parsed into an integer.  If the number does not meet the requirements, the user will be prompted to enter a correct value.  Similarly, if the user does not indicate any desired character types, the program will end.
 
-## Mock-Up
+# 4. Collaborators
+Clifford Morin: https://github.com/cliffordmorin
 
-The following image shows the web application's appearance and functionality:
-
-![The Password Generator application displays a red button to "Generate Password".](./Assets/03-javascript-homework-demo.png)
-
-## Grading Requirements
-
-This homework is graded based on the following criteria: 
-
-### Technical Acceptance Criteria: 40%
-
-* Satisfies all of the preceding acceptance criteria plus the following:
-
-  * The homework should not produce any errors in the console when you inspect it using Chrome DevTools.
-
-### Deployment: 32%
-
-* Application deployed at live URL.
-
-* Application loads with no errors.
-
-* Application GitHub URL submitted.
-
-* GitHub repository that contains application code.
-
-### Application Quality: 15%
-
-* Application user experience is intuitive and easy to navigate.
-
-* Application user interface style is clean and polished.
-
-* Application resembles the mock-up functionality provided in the homework instructions.
-
-### Repository Quality: 13%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains quality readme file with description, screenshot, and link to deployed application.
-
-## Review
-
-You are required to submit the following for review:
-
-* The URL of the deployed application.
-
-* The URL of the GitHub repository, with a unique name and a readme describing the project.
-
-- - -
-© 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+# 5. Images
+[!alt text](./images/home.png)
+[!alt text](./images/prompt.png)
+[!alt text](./images/generated.png)

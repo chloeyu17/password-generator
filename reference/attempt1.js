@@ -1,4 +1,6 @@
-//This is my first attempt at this assignment.  I realized later that there is a more concise way to write this but I wanted to keep this for reference.
+//This is my first attempt at this assignment.  
+//I realized later that there is a more concise way to write this 
+//but I wanted to keep this for reference and to show my original thought process.
 //List of all characters separated by type. 
 const uc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const lc = "abcdefghijklmnopqrstuvwxyz";
